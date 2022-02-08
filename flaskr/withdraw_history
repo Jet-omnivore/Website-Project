@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+    <div class="main-container effect-on-hover">
+        <h3><a href="{{ url_for('main') }}" class="home-link">Home</a></h3>
+        <h1>Withdraw</h1>
+        <div class="det">
+            <p class="det-p effect-on-hover" id="det-p-1">Withdrawn Cash <br> $ {{withdrawn_cash }} </p>
+            <p class="det-p effect-on-hover">Withdrawable Amount <br> $ {{withrawable_amount}} </p>
+        </div>
+        <div class="withdraw-input-container effect-on-hover">
+            <form method="POST">
+                <div class="input-container">
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="form-error-msg">{{ message[1] }}</div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                    <input type="text" placeholder="Enter Amount" name="amount" required>
+                </div>
+                <button name="continue-button" value="submit" type="submit">Continue</button>
+            </form>
+        </div>
+      </div>
+
+{% endblock %}
